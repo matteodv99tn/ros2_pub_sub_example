@@ -10,12 +10,40 @@ project(ros2_pub_sub_cpp)
 #            |_|
 find_package(ament_cmake REQUIRED)
 
-
 set(ROS2_REQUIRED_COMPONENTS
     rclcpp
 )
 foreach(COMPONENT ${ROS2_REQUIRED_COMPONENTS})
     find_package(${COMPONENT} REQUIRED)
 endforeach()
+
+
+#  _____                     _        _     _           
+# | ____|_  _____  ___ _   _| |_ __ _| |__ | | ___  ___ 
+# |  _| \ \/ / _ \/ __| | | | __/ _` | '_ \| |/ _ \/ __|
+# | |___ >  <  __/ (__| |_| | || (_| | |_) | |  __/\__ \
+# |_____/_/\_\___|\___|\__,_|\__\__,_|_.__/|_|\___||___/
+#                                                       
+# Subscriber
+add_executable(
+    subscriber
+    ${CMAKE_CURRENT_LIST_DIR}/src/subscriber.cpp
+)
+ament_target_dependencies(
+    subscriber
+    ${ROS2_REQUIRED_COMPONENTS}
+)
+
+
+#  ___           _        _ _
+# |_ _|_ __  ___| |_ __ _| | |
+#  | || '_ \/ __| __/ _` | | |
+#  | || | | \__ \ || (_| | | |
+# |___|_| |_|___/\__\__,_|_|_|
+#
+install(
+    TARGETS subscriber
+    DESTINATION lib/${PROJECT_NAME}
+)
 
 ament_package()

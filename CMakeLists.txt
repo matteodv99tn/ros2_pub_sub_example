@@ -45,6 +45,21 @@ ament_target_dependencies(
 )
 
 
+#  _____         _   _             
+# |_   _|__  ___| |_(_)_ __   __ _ 
+#   | |/ _ \/ __| __| | '_ \ / _` |
+#   | |  __/\__ \ |_| | | | | (_| |
+#   |_|\___||___/\__|_|_| |_|\__, |
+#                            |___/ 
+if(BUILD_TESTING)
+    find_package(ament_cmake_gtest REQUIRED)
+    ament_add_gtest(
+        ${PROJECT_NAME}_test 
+        src/tests.cpp
+    )
+endif()
+
+
 #  ___           _        _ _
 # |_ _|_ __  ___| |_ __ _| | |
 #  | || '_ \/ __| __/ _` | | |
